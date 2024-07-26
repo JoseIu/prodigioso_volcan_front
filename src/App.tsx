@@ -1,17 +1,10 @@
-import { Navigate, Route, Routes } from "react-router-dom";
-import "./App.css";
-import { LoginPage } from "./pages/LoginPage";
-import { UserProfile } from "./pages/UserProfile";
+import { AuthProvider } from './context/AuthProvider';
+import { AppRouter } from './routes/AppRouter';
 
 export const App = () => {
-	return (
-		<>
-			<Routes>
-				<Route index path="login" element={<LoginPage />} />
-				<Route path="user-profile" element={<UserProfile />} />
-
-				<Route path="*" element={<Navigate to="login" />} />
-			</Routes>
-		</>
-	);
+  return (
+    <AuthProvider>
+      <AppRouter />
+    </AuthProvider>
+  );
 };
