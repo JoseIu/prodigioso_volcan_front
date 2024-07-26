@@ -1,0 +1,20 @@
+.card {
+  padding: 1.5em 2em;
+  box-shadow: 0 0 0.625rem rgb(0, 0, 0, 10%);
+  border-radius: 0.5em;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  &__img {
+    max-width: 20em;
+    border-radius: 0.5em;
+  }
+  &__content {
+  }
+  &__name {
+  }
+  &__emai {
+  }
+  &__info {
+  }
+}
