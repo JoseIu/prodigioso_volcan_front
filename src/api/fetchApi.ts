@@ -1,15 +1,18 @@
-export const fetchApi = async (token: string) => {
-	const BACK_END_URL = import.meta.env.VITE_BACK_URL;
+import { APIResponseInterface } from '../interface/apiResponse.interface';
 
-	const fetchOptions = {
-		method: "POST",
-		headers: {
-			"Content-Type": "application/json",
-			Authorization: `Bearer ${token}`,
-		},
-	};
+export const fetchApi = async (credential: string): Promise<APIResponseInterface> => {
+  const BACK_END_URL = import.meta.env.VITE_BACK_URL;
 
-	const response = await fetch(`${BACK_END_URL}/login-google`, fetchOptions);
+  const fetchOptions = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${credential}`,
+    },
+  };
 
-	console.log(response);
+  const response = await fetch(`${BACK_END_URL}/login-google`, fetchOptions);
+
+  const data: APIResponseInterface = await response.json();
+  return data;
 };
