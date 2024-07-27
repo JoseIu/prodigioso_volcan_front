@@ -1,20 +1,52 @@
 .card {
-  padding: 1.5em 2em;
-  box-shadow: 0 0 0.625rem rgb(0, 0, 0, 10%);
+  width: 20em;
   border-radius: 0.5em;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+  overflow: hidden;
 
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-direction: column;
+  row-gap: 2em;
+  &__banner {
+    height: 8rem;
+    background-color: #222;
+
+    display: flex;
+    align-items: end;
+    justify-content: center;
+  }
   &__img {
-    max-width: 20em;
-    border-radius: 0.5em;
+    max-width: 5em;
+    border-radius: 50%;
+    transform: translateY(50%);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
   }
   &__content {
+    padding: 1em;
+
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
   }
   &__name {
+    text-align: center;
+    font-weight: 600;
   }
-  &__emai {
-  }
-  &__info {
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    font-weight: 400;
+
+    &-info {
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+    }
+    &-icon {
+      width: 1.2em;
+      color: #222222cc;
+    }
   }
 }
