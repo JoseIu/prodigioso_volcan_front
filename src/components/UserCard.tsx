@@ -1,4 +1,7 @@
 import { UserInterface } from '../interface/user.interface';
+import { CheckIcon } from './icons/CheckIcon';
+import { EmailIcon } from './icons/EmailIcon';
+import { PersonIcon } from './icons/PersonIcon';
 import './userCard.scss';
 
 interface UserCardProps {
@@ -8,13 +11,27 @@ interface UserCardProps {
 export const UserCard = ({ user }: UserCardProps) => {
   return (
     <article className="card">
-      <img className="card__img" src={user.picture} alt={user.name} />
+      <div className="card__banner">
+        <img className="card__img" src={user.picture} alt={user.name} />
+      </div>
 
       <div className="card__content">
-        <h2 className="card__name">Name:{user.name}</h2>
-        <p className="card__email">Email:{user.email}</p>
-        <p className="card__info">Provider Service: {user.iss}</p>
-        <p className="card__info">Verified:{user.email_verified ? 'YES' : 'NO'}</p>
+        <h2 className="card__name">{user.name}</h2>
+
+        <ul className="card__details">
+          <li className="card__details-info">
+            <EmailIcon className="card__details-icon" aria-label="email icon" />
+            {user.email}
+          </li>
+          <li className="card__details-info">
+            <CheckIcon className="card__details-icon" aria-label="email verfied icon" />
+            {user.email_verified ? 'Verfied' : 'No Verified'}
+          </li>
+          <li className="card__details-info">
+            <PersonIcon className="card__details-icon" aria-label="user nickname" />
+            {user.given_name}
+          </li>
+        </ul>
       </div>
     </article>
   );
