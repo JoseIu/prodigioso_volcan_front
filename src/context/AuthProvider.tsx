@@ -1,3 +1,4 @@
+import { googleLogout } from '@react-oauth/google';
 import { useReducer } from 'react';
 import { UserInterface } from '../interface/user.interface';
 import { AuthContext } from './AuthContext';
@@ -31,7 +32,14 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       payload: userData,
     });
   };
-  const onLogout = () => {};
+  const onLogout = () => {
+    googleLogout();
+    localStorage.removeItem('userData');
+
+    dispatch({
+      type: 'signOut',
+    });
+  };
 
   return <AuthContext.Provider value={{ onLogin, onLogout, authState }}>{children}</AuthContext.Provider>;
 };
