@@ -1,3 +1,4 @@
+import { useAuth } from '../hook/useAuth';
 import { UserInterface } from '../interface/user.interface';
 import { CheckIcon } from './icons/CheckIcon';
 import { EmailIcon } from './icons/EmailIcon';
@@ -9,10 +10,11 @@ interface UserCardProps {
 }
 
 export const UserCard = ({ user }: UserCardProps) => {
+  const { onLogout } = useAuth();
   return (
     <article className="card">
       <div className="card__banner">
-        <img className="card__img" src={user.picture} alt={user.name} />
+        <img className="card__img skeleton" src={user.picture} alt={user.name} />
       </div>
 
       <div className="card__content">
@@ -32,6 +34,10 @@ export const UserCard = ({ user }: UserCardProps) => {
             {user.given_name}
           </li>
         </ul>
+
+        <button className="logOut" onClick={onLogout}>
+          Log Out
+        </button>
       </div>
     </article>
   );
